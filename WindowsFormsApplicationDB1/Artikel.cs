@@ -17,6 +17,8 @@ namespace WindowsFormsApplicationDB1
         private Int32 verpackung;
         private Decimal vkPreis;
         private DateTime letzteEntnahme;
+        public delegate void Bestellmeldung(String meldung);
+        public Bestellmeldung onUpdateError = null;
 
         public int ArtikelOid
         {
@@ -80,6 +82,13 @@ namespace WindowsFormsApplicationDB1
             set
             {
                 bestand = value;
+                if(bestand <= this.Meldebestand)
+                {
+                    if(onUpdateError != null)
+                    {
+                        onUpdateError("Meldebestand erreicht");
+                    }
+                }
             }
         }
 
@@ -136,7 +145,7 @@ namespace WindowsFormsApplicationDB1
         }
         public override string ToString()
         {
-            return String.Format("{0} {1}", this.ArtikelOid, this.Bezeichnung);
+            return String.Format("{0}: {1}", this.ArtikelOid, this.Bezeichnung);
         }
         public Artikel()
         {

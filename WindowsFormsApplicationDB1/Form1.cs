@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Globalization;
 
 namespace WindowsFormsApplicationDB1
 {
@@ -51,8 +52,13 @@ namespace WindowsFormsApplicationDB1
 
         private void buttonCommand_Click(object sender, EventArgs e)
         {
+            if(con.State != ConnectionState.Open)
+            {
+                con.Open();
+            }
             cmd = con.CreateCommand();
             cmd.CommandText = "Select * from tArtikel;";
+            //cmd = new OleDbCommand("Select * from tArtikel;", con);
             try
             {
                 reader = cmd.ExecuteReader();
@@ -117,6 +123,7 @@ namespace WindowsFormsApplicationDB1
             if (listBoxAusgabe.SelectedItem != null)
             {
                 Artikel a = (Artikel) listBoxAusgabe.SelectedItem;
+                a.onUpdateError = Meldebestand;
                 FormUpdate frmUpdate = new FormUpdate(a);
                 frmUpdate.ShowDialog();
                 // modales Fenster 
@@ -125,6 +132,8 @@ namespace WindowsFormsApplicationDB1
                 {
 
                     updateArtikel(a);
+                    listBoxAusgabe.DataSource = null;
+                    listBoxAusgabe.DataSource = artikelList;
                 }
                 else
                 {
@@ -133,7 +142,6 @@ namespace WindowsFormsApplicationDB1
             }
 
         }
-
         private void updateArtikel(Artikel a)
         {
             //TODO: Command-Objekt
@@ -143,7 +151,7 @@ namespace WindowsFormsApplicationDB1
             cmd.Parameters.AddWithValue("BEZ", a.Bezeichnung);
             cmd.Parameters.AddWithValue("BEST", a.Bestand);
             cmd.Parameters.AddWithValue("MBEST", a.Meldebestand);
-            cmd.Parameters.AddWithValue("VKP", a.VkPreis);
+            cmd.Parameters.AddWithValue("VKP", a.VkPreis.ToString(new CultureInfo("de-DE")));
             cmd.Parameters.AddWithValue("ENT", a.LetzteEntnahme);
             //TODO: Commandtext: SQL
             String sql = "UPDATE tArtikel SET ArtikelNR = ANR, Bezeichnung = BEZ, Bestand = BEST, "; 
@@ -164,6 +172,64 @@ namespace WindowsFormsApplicationDB1
                 MessageBox.Show("Fehler beim Update");
                 toolStripStatusLabel1.Text = exc.Message;
             }
+        }
+
+        private void buttonNeuerDatensatz_Click(object sender, EventArgs e)
+        {
+            Artikel a = new Artikel();
+            FormInsert frmInsert = new FormInsert(con,a);
+            frmInsert.ShowDialog();
+            if (a != null)
+            {
+                insertArtikel(a);
+            }
+        }
+
+        private void insertArtikel(Artikel a)
+        {
+            //TODO: Command-Objekt
+            OleDbCommand cmd = con.CreateCommand();
+            //TODO: Parameter generieren
+            cmd.Parameters.AddWithValue("ANR", a.ArtikelNr);
+            cmd.Parameters.AddWithValue("AGR", a.ArtikelGruppe);
+            cmd.Parameters.AddWithValue("BEZ", a.Bezeichnung);
+            cmd.Parameters.AddWithValue("BEST", a.Bestand);
+            cmd.Parameters.AddWithValue("MBEST", a.Meldebestand);
+            cmd.Parameters.AddWithValue("VPA", a.Verpackung);
+            string vkp = a.VkPreis.ToString();
+            cmd.Parameters.AddWithValue("VKP", a.VkPreis.ToString(new CultureInfo("de-DE")));
+            cmd.Parameters.AddWithValue("ENT", a.LetzteEntnahme);
+            //TODO: Commandtext: SQL
+            String sql = "INSERT INTO tartikel (ArtikelNr, ArtikelGruppe, Bezeichnung, Bestand, Meldebestand,";
+            sql += " Verpackung, VkPreis, letzteEntnahme) Values(ANR, AGR, BEZ, BEST, MBEST, VPA, VKP, ENT)";
+            cmd.CommandText = sql;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                toolStripStatusLabel1.Text = "Insert erfolgreich";
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                toolStripStatusLabel1.Text = exc.Message;
+            }
+        }
+
+        private void buttonBezirk_Click(object sender, EventArgs e)
+        {
+            OleDbCommand cmd = con.CreateCommand();
+            cmd.CommandText = "INSERT INTO tBezirk(Bezirk) Values('" + textBoxBezirk.Text + "')";
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "SELECT @@IDENTITY FROM tBezirk";
+            Int32 id = Convert.ToInt32(cmd.ExecuteScalar());
+            MessageBox.Show("Satz wurde mit ID = " + id.ToString() +" eingefügt");
+        }
+        private void Meldebestand(String message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

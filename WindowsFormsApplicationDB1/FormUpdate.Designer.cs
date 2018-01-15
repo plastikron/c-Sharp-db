@@ -40,14 +40,14 @@
             this.labelletzteEntnahme = new System.Windows.Forms.Label();
             this.textBoxvkPreis = new System.Windows.Forms.TextBox();
             this.labelvkPreis = new System.Windows.Forms.Label();
-            this.textBoxVerpackung = new System.Windows.Forms.TextBox();
             this.labelVerpackung = new System.Windows.Forms.Label();
             this.textBoxMeldebestand = new System.Windows.Forms.TextBox();
             this.labelMeldebestand = new System.Windows.Forms.Label();
-            this.textBoxArtikelgr = new System.Windows.Forms.TextBox();
             this.labelArtikelGr = new System.Windows.Forms.Label();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxVerpackung = new System.Windows.Forms.TextBox();
+            this.textBoxArtikelgr = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelArtikelOid
@@ -147,14 +147,6 @@
             this.labelvkPreis.TabIndex = 12;
             this.labelvkPreis.Text = "vkPreis";
             // 
-            // textBoxVerpackung
-            // 
-            this.textBoxVerpackung.Location = new System.Drawing.Point(195, 326);
-            this.textBoxVerpackung.Name = "textBoxVerpackung";
-            this.textBoxVerpackung.ReadOnly = true;
-            this.textBoxVerpackung.Size = new System.Drawing.Size(146, 20);
-            this.textBoxVerpackung.TabIndex = 11;
-            // 
             // labelVerpackung
             // 
             this.labelVerpackung.AutoSize = true;
@@ -180,14 +172,6 @@
             this.labelMeldebestand.TabIndex = 8;
             this.labelMeldebestand.Text = "Meldebestand";
             // 
-            // textBoxArtikelgr
-            // 
-            this.textBoxArtikelgr.Location = new System.Drawing.Point(195, 145);
-            this.textBoxArtikelgr.Name = "textBoxArtikelgr";
-            this.textBoxArtikelgr.ReadOnly = true;
-            this.textBoxArtikelgr.Size = new System.Drawing.Size(146, 20);
-            this.textBoxArtikelgr.TabIndex = 17;
-            // 
             // labelArtikelGr
             // 
             this.labelArtikelGr.AutoSize = true;
@@ -201,7 +185,7 @@
             // 
             this.buttonOk.Location = new System.Drawing.Point(381, 381);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(92, 47);
+            this.buttonOk.Size = new System.Drawing.Size(104, 30);
             this.buttonOk.TabIndex = 18;
             this.buttonOk.Text = "Ok";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -209,13 +193,29 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(479, 381);
+            this.buttonCancel.Location = new System.Drawing.Point(491, 381);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(92, 47);
+            this.buttonCancel.Size = new System.Drawing.Size(101, 30);
             this.buttonCancel.TabIndex = 19;
             this.buttonCancel.Text = "Abbrechen";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // textBoxVerpackung
+            // 
+            this.textBoxVerpackung.Location = new System.Drawing.Point(195, 326);
+            this.textBoxVerpackung.Name = "textBoxVerpackung";
+            this.textBoxVerpackung.ReadOnly = true;
+            this.textBoxVerpackung.Size = new System.Drawing.Size(146, 20);
+            this.textBoxVerpackung.TabIndex = 11;
+            // 
+            // textBoxArtikelgr
+            // 
+            this.textBoxArtikelgr.Location = new System.Drawing.Point(195, 145);
+            this.textBoxArtikelgr.Name = "textBoxArtikelgr";
+            this.textBoxArtikelgr.ReadOnly = true;
+            this.textBoxArtikelgr.Size = new System.Drawing.Size(146, 20);
+            this.textBoxArtikelgr.TabIndex = 17;
             // 
             // FormUpdate
             // 
@@ -264,13 +264,13 @@
         private System.Windows.Forms.Label labelletzteEntnahme;
         private System.Windows.Forms.TextBox textBoxvkPreis;
         private System.Windows.Forms.Label labelvkPreis;
-        private System.Windows.Forms.TextBox textBoxVerpackung;
         private System.Windows.Forms.Label labelVerpackung;
         private System.Windows.Forms.TextBox textBoxMeldebestand;
         private System.Windows.Forms.Label labelMeldebestand;
-        private System.Windows.Forms.TextBox textBoxArtikelgr;
         private System.Windows.Forms.Label labelArtikelGr;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.TextBox textBoxVerpackung;
+        private System.Windows.Forms.TextBox textBoxArtikelgr;
     }
 }

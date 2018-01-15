@@ -35,6 +35,10 @@
             this.buttonReader = new System.Windows.Forms.Button();
             this.listBoxAusgabe = new System.Windows.Forms.ListBox();
             this.buttonchange = new System.Windows.Forms.Button();
+            this.buttonNeuerDatensatz = new System.Windows.Forms.Button();
+            this.labelBezirk = new System.Windows.Forms.Label();
+            this.textBoxBezirk = new System.Windows.Forms.TextBox();
+            this.buttonBezirk = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +98,7 @@
             // 
             // buttonchange
             // 
-            this.buttonchange.Location = new System.Drawing.Point(376, 310);
+            this.buttonchange.Location = new System.Drawing.Point(375, 307);
             this.buttonchange.Name = "buttonchange";
             this.buttonchange.Size = new System.Drawing.Size(172, 58);
             this.buttonchange.TabIndex = 5;
@@ -102,11 +106,51 @@
             this.buttonchange.UseVisualStyleBackColor = true;
             this.buttonchange.Click += new System.EventHandler(this.buttonchange_Click);
             // 
+            // buttonNeuerDatensatz
+            // 
+            this.buttonNeuerDatensatz.Location = new System.Drawing.Point(375, 391);
+            this.buttonNeuerDatensatz.Name = "buttonNeuerDatensatz";
+            this.buttonNeuerDatensatz.Size = new System.Drawing.Size(172, 36);
+            this.buttonNeuerDatensatz.TabIndex = 6;
+            this.buttonNeuerDatensatz.Text = "Datensatz einfügen";
+            this.buttonNeuerDatensatz.UseVisualStyleBackColor = true;
+            this.buttonNeuerDatensatz.Click += new System.EventHandler(this.buttonNeuerDatensatz_Click);
+            // 
+            // labelBezirk
+            // 
+            this.labelBezirk.AutoSize = true;
+            this.labelBezirk.Location = new System.Drawing.Point(265, 39);
+            this.labelBezirk.Name = "labelBezirk";
+            this.labelBezirk.Size = new System.Drawing.Size(36, 13);
+            this.labelBezirk.TabIndex = 7;
+            this.labelBezirk.Text = "Bezirk";
+            // 
+            // textBoxBezirk
+            // 
+            this.textBoxBezirk.Location = new System.Drawing.Point(306, 36);
+            this.textBoxBezirk.Name = "textBoxBezirk";
+            this.textBoxBezirk.Size = new System.Drawing.Size(135, 20);
+            this.textBoxBezirk.TabIndex = 8;
+            // 
+            // buttonBezirk
+            // 
+            this.buttonBezirk.Location = new System.Drawing.Point(447, 36);
+            this.buttonBezirk.Name = "buttonBezirk";
+            this.buttonBezirk.Size = new System.Drawing.Size(81, 20);
+            this.buttonBezirk.TabIndex = 9;
+            this.buttonBezirk.Text = "neuer Bezirk";
+            this.buttonBezirk.UseVisualStyleBackColor = true;
+            this.buttonBezirk.Click += new System.EventHandler(this.buttonBezirk_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 473);
+            this.Controls.Add(this.buttonBezirk);
+            this.Controls.Add(this.textBoxBezirk);
+            this.Controls.Add(this.labelBezirk);
+            this.Controls.Add(this.buttonNeuerDatensatz);
             this.Controls.Add(this.buttonchange);
             this.Controls.Add(this.listBoxAusgabe);
             this.Controls.Add(this.buttonReader);
@@ -131,6 +175,10 @@
         private System.Windows.Forms.Button buttonReader;
         private System.Windows.Forms.ListBox listBoxAusgabe;
         private System.Windows.Forms.Button buttonchange;
+        private System.Windows.Forms.Button buttonNeuerDatensatz;
+        private System.Windows.Forms.Label labelBezirk;
+        private System.Windows.Forms.TextBox textBoxBezirk;
+        private System.Windows.Forms.Button buttonBezirk;
     }
 }
 
